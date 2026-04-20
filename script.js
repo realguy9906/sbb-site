@@ -138,4 +138,106 @@ document.addEventListener("DOMContentLoaded", () => {
             cursorOutline.classList.remove('cursor-hover');
         });
     });
+
+    // 7. Waitlist Popup Notification Logic
+    const aboutSection = document.getElementById('about');
+    const waitlistPopup = document.getElementById('waitlist-popup');
+    const closePopupBtn = waitlistPopup?.querySelector('.close-popup');
+    
+    let popupTriggered = false;
+
+    if (aboutSection && waitlistPopup) {
+        const popupObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If they scroll to it and we haven't triggered it yet
+                if (entry.isIntersecting && !popupTriggered) {
+                    popupTriggered = true; 
+                    waitlistPopup.classList.add('show');
+                }
+            });
+        }, { threshold: 0.3 }); // Requires 30% of section visible
+
+        popupObserver.observe(aboutSection);
+    }
+
+    if (closePopupBtn) {
+        closePopupBtn.addEventListener('click', () => {
+            waitlistPopup.classList.remove('show');
+        });
+    }
+
+    // 8. Exit Intent Logic
+    const exitPopup = document.getElementById('exit-popup');
+    const closeExitBtn = exitPopup?.querySelector('.close-modal');
+    
+    let exitTriggered = false;
+
+    if (exitPopup) {
+        // Use mouseout for more reliable exit-intent detection across browsers
+        document.addEventListener('mouseout', (e) => {
+            // When mouse leaves the window completely toward the top address bar
+            if (!e.relatedTarget && e.clientY < 20 && !exitTriggered) {
+                const titles = [
+                    "Before you go...", 
+                    "Still thinking about it?", 
+                    "A space built for women like you"
+                ];
+                const headerEl = exitPopup.querySelector('.exit-title');
+                if (headerEl) {
+                    headerEl.textContent = titles[Math.floor(Math.random() * titles.length)];
+                }
+                
+                exitPopup.classList.add('show');
+                exitTriggered = true;
+            }
+        });
+
+        if (closeExitBtn) {
+            closeExitBtn.addEventListener('click', () => {
+                exitPopup.classList.remove('show');
+            });
+        }
+        
+        // Close modal if clicking outside of the content box
+        exitPopup.addEventListener('click', (e) => {
+            if (e.target === exitPopup) {
+                exitPopup.classList.remove('show');
+            }
+        });
+    }
+
+    // 9. Countdown Timer Logic
+    const countDownDate = new Date("April 21, 2026 23:59:59").getTime();
+    
+    const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+        
+        const daysEl = document.getElementById("cd-days");
+        const hoursEl = document.getElementById("cd-hours");
+        const minsEl = document.getElementById("cd-mins");
+        const secsEl = document.getElementById("cd-secs");
+        
+        if (daysEl && hoursEl && minsEl && secsEl) {
+            if (distance < 0) {
+                // If the countdown is over, optionally hide the timer
+                const timerContainer = document.getElementById("toast-countdown");
+                if (timerContainer) timerContainer.style.display = "none";
+            } else {
+                // Time calculations
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                daysEl.textContent = days < 10 ? "0" + days : days;
+                hoursEl.textContent = hours < 10 ? "0" + hours : hours;
+                minsEl.textContent = minutes < 10 ? "0" + minutes : minutes;
+                secsEl.textContent = seconds < 10 ? "0" + seconds : seconds;
+            }
+        }
+    };
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 });

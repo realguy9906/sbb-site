@@ -71,7 +71,7 @@
                 <div class="hero-actions animate-fade-up delay-4">
                     <!-- EDIT THIS TEXT AND LINK: Google Form CTA -->
                     <a href="https://forms.google.com/YOUR-LINK" class="btn btn-primary" target="_blank"
-                        rel="noopener">Join the Waitlist</a>
+                        rel="noopener">Save your spot - GET 15% OFF</a>
                 </div>
             </div>
             <div class="hero-image-wrapper animate-fade-in delay-3">
@@ -79,6 +79,24 @@
                     class="hero-img">
             </div>
         </section>
+
+        <!-- Trust Bar -->
+        <div class="trust-bar bg-primary-soft">
+            <div class="container trust-flex reveal">
+                <div class="trust-item">
+                    <span class="icon">🔒</span>
+                    <span>Women-only space</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">🧕</span>
+                    <span>Niqabi/covered-friendly environment</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">🚫</span>
+                    <span>Windows/doors covered for privacy</span>
+                </div>
+            </div>
+        </div>
 
         <!-- 2. Meet the Coach -->
         <section class="section" id="coach">
@@ -125,12 +143,14 @@
                     <div class="card reveal">
                         <div class="card-icon">🧕</div>
                         <h3>Modest & Private</h3>
-                        <p>A women-only environment that is fully respectful and accommodating of those who cover.</p>
+                        <p>A women-only environment that is fully respectful and accommodating of those who cover or
+                            don't!</p>
                     </div>
                     <div class="card reveal">
                         <div class="card-icon">🤝</div>
                         <h3>Seeking Confidence</h3>
-                        <p>For those who want a completely safe, non-contact introduction to boxing without gym
+                        <p>For those who want a completely safe, non-contact introduction to boxing without judgment or
+                            gym
                             intimidation.</p>
                     </div>
                 </div>
@@ -323,6 +343,56 @@
             <p>&copy; <span id="year"></span> Sisters' Beginner Boxing. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Waitlist Toast Notification -->
+    <div id="waitlist-popup" class="toast-popup">
+        <button class="close-popup" aria-label="Close notification">&times;</button>
+        <div class="toast-content">
+            <h4 style="margin-top: 0; color: var(--primary-color);">Are you ready to try something new?</h4>
+
+            <!-- Countdown Timer -->
+            <div id="toast-countdown" class="toast-countdown">
+                <div class="time-box">
+                    <span id="cd-days">00</span>
+                    <small>Days</small>
+                </div>
+                <div class="time-box">
+                    <span id="cd-hours">00</span>
+                    <small>Hrs</small>
+                </div>
+                <div class="time-box">
+                    <span id="cd-mins">00</span>
+                    <small>Min</small>
+                </div>
+                <div class="time-box">
+                    <span id="cd-secs">00</span>
+                    <small>Sec</small>
+                </div>
+            </div>
+
+            <p style="margin-bottom: 1rem; font-size: 0.95rem; color: var(--text-main);">Hurry! Join the waitlist and
+                get 15% OFF your first month</p>
+
+            <!-- EDIT THIS LINK -->
+            <a href="https://forms.google.com/YOUR-LINK" class="btn btn-primary btn-small w-100" target="_blank"
+                rel="noopener">Sign up to the Waitlist</a>
+        </div>
+    </div>
+
+    <!-- Exit Intent Modal -->
+    <div id="exit-popup" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <h3 class="exit-title">Still thinking about it?</h3>
+            <p class="exit-subtitle highlight">No experience needed, no contact. Join the waitlist now and receive 15%
+                off your first month!</p>
+            <!-- EDIT THIS LINK -->
+            <a href="https://forms.google.com/YOUR-LINK" class="coupon-wrapper" target="_blank" rel="noopener"
+                aria-label="Save your spot and claim 15% off!">
+                <img src="./assets/golden_coupon.png" alt="15% OFF your first month" class="coupon-img" />
+            </a>
+        </div>
+    </div>
 
     <script type="module" src="/script.js"></script>
 </body>
