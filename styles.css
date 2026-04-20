@@ -408,6 +408,22 @@ p {
     font-weight: 700;
 }
 
+.coach-img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    object-fit: cover;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+}
+
+.coach-img:hover {
+    filter: grayscale(0%);
+}
+
 .feature-box {
     background-color: var(--surface-color);
     padding: 3rem;
@@ -716,5 +732,41 @@ p {
     
     .footer-links {
         text-align: left;
+    }
+}
+
+/* Custom Cursor */
+.cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 6px; height: 6px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    /* We use JS translate combined with this offset */
+}
+
+.cursor-outline {
+    position: fixed;
+    top: 0; left: 0;
+    width: 32px; height: 32px;
+    border: 1.5px solid var(--primary-color);
+    border-radius: 50%;
+    z-index: 9998;
+    pointer-events: none;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.cursor-hover {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(175, 133, 124, 0.1);
+}
+
+/* Hide on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-dot, .cursor-outline {
+        display: none !important;
     }
 }

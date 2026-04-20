@@ -94,4 +94,48 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", revealOnScroll);
     // Trigger once on page load just in case some elements are already in view
     revealOnScroll(); 
+
+    // 6. Custom Cursor implementation
+    const cursorDot = document.createElement('div');
+    cursorDot.classList.add('cursor-dot');
+    document.body.appendChild(cursorDot);
+
+    const cursorOutline = document.createElement('div');
+    cursorOutline.classList.add('cursor-outline');
+    document.body.appendChild(cursorOutline);
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let outlineX = mouseX;
+    let outlineY = mouseY;
+    let dotX = mouseX;
+    let dotY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    const animateCursor = () => {
+        dotX += (mouseX - dotX) * 0.5;
+        dotY += (mouseY - dotY) * 0.5;
+        outlineX += (mouseX - outlineX) * 0.15;
+        outlineY += (mouseY - outlineY) * 0.15;
+
+        cursorDot.style.transform = `translate(calc(${dotX}px - 50%), calc(${dotY}px - 50%))`;
+        cursorOutline.style.transform = `translate(calc(${outlineX}px - 50%), calc(${outlineY}px - 50%))`;
+
+        requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
+
+    const interactiveElements = document.querySelectorAll('a, button, input, textarea');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorOutline.classList.add('cursor-hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            cursorOutline.classList.remove('cursor-hover');
+        });
+    });
 });
