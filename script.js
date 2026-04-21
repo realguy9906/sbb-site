@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 9. Countdown Timer Logic
-    const countDownDate = new Date("April 22, 2026 12:00:00").getTime();
+    const countDownDate = new Date("April 22, 2026 23:59:59").getTime();
     
     const updateCountdown = () => {
         const now = new Date().getTime();
@@ -240,4 +240,16 @@ document.addEventListener("DOMContentLoaded", () => {
     
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // 10. Scroll Arrow Hiding Logic
+    const scrollArrow = document.getElementById('scrollArrow');
+    if (scrollArrow) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                scrollArrow.classList.add('hidden');
+            } else {
+                scrollArrow.classList.remove('hidden');
+            }
+        });
+    }
 });

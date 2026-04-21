@@ -1148,3 +1148,224 @@ p {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+/* --- SEO CONVERSION RESTYLING --- */
+
+.hero-badges {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.badge-pill {
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-trust-stars {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.trust-stat {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.hero-discounts {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.discount-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.discount-badge {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background: transparent;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.discount-note {
+    font-size: 0.75rem;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.urgency-text {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.clean-bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.clean-bullet-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    color: var(--text-light);
+}
+
+.clean-bullet-list li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.clean-text-paragraphs p {
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+}
+
+.highlight-text {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.offer-clarity-box {
+    background: white;
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.map-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.map-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.map-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+}
+
+.responsive-map {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+}
+
+.responsive-map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Mobile & Tablet Optimizations */
+@media (min-width: 768px) {
+    .hero-trust-stars {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .map-container {
+        flex-direction: row;
+    }
+    .map-card {
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-large {
+        width: 100%;
+    }
+    .clean-bullet-list li {
+        font-size: 0.95rem;
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Scroll Arrow Logic */
+.hero {
+    position: relative;
+}
+
+.scroll-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounceBounce 2s infinite ease-in-out;
+    color: var(--primary-color);
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.scroll-arrow.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes bounceBounce {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, 10px);
+    }
+}
+
