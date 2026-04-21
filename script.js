@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 9. Countdown Timer Logic
-    const countDownDate = new Date("April 21, 2026 23:59:59").getTime();
+    const countDownDate = new Date("April 22, 2026 12:00:00").getTime();
     
     const updateCountdown = () => {
         const now = new Date().getTime();

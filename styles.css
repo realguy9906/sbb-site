@@ -1108,3 +1108,43 @@ p {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Carousel Styles */
+.carousel-container {
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: scrollCarousel 40s linear infinite;
+}
+
+.carousel-track img {
+    height: 180px; 
+    width: 250px;
+    object-fit: cover;
+    margin-right: 1.5rem;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+@keyframes scrollCarousel {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Coach Video Reel */
+.coach-video {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    margin: 1rem 0 1.5rem 0;
+    filter: grayscale(100%);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
