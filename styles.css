@@ -1369,3 +1369,40 @@ p {
     }
 }
 
+/* Shop Section */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.shop-card {
+    background-color: var(--surface-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+.shop-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+}
+.shop-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+.shop-card-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.shop-card-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
